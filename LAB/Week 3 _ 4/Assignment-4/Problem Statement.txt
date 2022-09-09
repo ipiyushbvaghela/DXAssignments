@@ -1,0 +1,9 @@
+Using carprice dataset file 
+
+Dataset Details - Data_Dictionary 
+
+Create a model that the predicts the price of a car
+
+Do the following:
+
+Work on Loading Data, Data Preprocessing(like cleaning, missing values, encoding etc.,), Visualize,  Implementing an algorithm(Regression) and Performance Metrics 

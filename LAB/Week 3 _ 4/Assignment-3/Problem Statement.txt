@@ -1,0 +1,14 @@
+Using Car_data file: 
+
+Dataset contains details of customers who wants to buy a car, considering their annual salaries.
+
+Columns:
+User ID
+Gender
+Age
+Annual Salary
+Purchase Decision (No = 0; Yes = 1)
+
+Do the following:
+
+Work on Loading Data, Data Preprocessing(like cleaning, missing values, encoding etc.,), Visualize,  Implementing an algorithm and Performance Metrics 

@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-08-29 Mon 16:58 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DATA 62500 Project 1: Machine Learning Basics</title>
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+</style>
+<link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">DATA 62500 Project 1: Machine Learning Basics</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orge5371da">1. Preliminaries: Python and Jupyter Notebook</a></li>
+<li><a href="#orgda20776">2. Importing the Datset (10 points)</a>
+<ul>
+<li><a href="#org858c91e">2.1. Steps</a></li>
+</ul>
+</li>
+<li><a href="#orge993db2">3. Preparing the data (10 points)</a>
+<ul>
+<li><a href="#org59d16e9">3.1. Steps</a></li>
+</ul>
+</li>
+<li><a href="#orgf55ea45">4. Training and evaluating the XGBoost classifier (10 points)</a>
+<ul>
+<li><a href="#org0185174">4.1. Steps</a></li>
+</ul>
+</li>
+<li><a href="#org6fb95e3">5. Additional Classifiers (20 points)</a>
+<ul>
+<li><a href="#org79d0308">5.1. Steps</a></li>
+</ul>
+</li>
+<li><a href="#org3916093">6. What to Submit</a></li>
+<li><a href="#orgcd4d91a">7. Concluding remarks</a></li>
+</ul>
+</div>
+</div>
+<p>
+This initial project serves mainly to demonstrate basic skills with
+Python and Jupyter notebook, importing data using Pandas and running
+basic classification algorithms using scikit-learn. Remember that all
+code has to be your own, and all documentation and analysis text needs
+to be your own words. 
+</p>
+
+<div id="outline-container-orge5371da" class="outline-2">
+<h2 id="orge5371da"><span class="section-number-2">1.</span> Preliminaries: Python and Jupyter Notebook</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+As discussed in class, on your own machine you need to install Python
+3.10, and use <code>pip</code> to install the following packages:
+</p>
+<ul class="org-ul">
+<li>scikit-learn</li>
+<li>pandas</li>
+<li>xgboost</li>
+<li>jupyter</li>
+</ul>
+
+<p>
+If you already have an Anaconda distribution installed, and you know how
+to use it to install packages, you are welcome to use that as well.
+</p>
+
+<p>
+All of the steps below should be shown in a Jupyter notebook file that
+you will submit.
+</p>
+
+<p>
+You should use at least one separate notebook cell for each of the four
+task sections below. You may divide each section up further into
+additional cells if you wish.  Just make sure that all the required
+information is printed out when the cells are run.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgda20776" class="outline-2">
+<h2 id="orgda20776"><span class="section-number-2">2.</span> Importing the Datset (10 points)</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+This portion involves creating your Jupyter notebook and loading the
+provided dataset into it. 
+</p>
+</div>
+
+
+<div id="outline-container-org858c91e" class="outline-3">
+<h3 id="org858c91e"><span class="section-number-3">2.1.</span> Steps</h3>
+<div class="outline-text-3" id="text-2-1">
+<ol class="org-ol">
+<li>Download the provided malware detection dataset <code>file_pe_headers.csv</code> 
+from Blackboard and save it in your project folder.</li>
+<li>Run Jupyter Notebook from that folder and create a new notebook.</li>
+<li>Use the pandas <code>read_csv</code> function to load the dataset into a DataFrame
+variable.</li>
+<li>Use the <code>shape</code> attribute to print out and verify the dataset&rsquo;s
+dimensions.</li>
+<li>Use the <code>columns</code> attribute to view the column (feature) names in
+this dataset.</li>
+<li>At the very top of your notebook, before any code, insert a Markdown
+cell and give it a title &ldquo;DATA 62500 Lab Project 1&rdquo;. Also put your name
+and section number in it.</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge993db2" class="outline-2">
+<h2 id="orge993db2"><span class="section-number-2">3.</span> Preparing the data (10 points)</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+In this part you will create the training and test sets needed to train
+a classifier.
+</p>
+</div>
+
+<div id="outline-container-org59d16e9" class="outline-3">
+<h3 id="org59d16e9"><span class="section-number-3">3.1.</span> Steps</h3>
+<div class="outline-text-3" id="text-3-1">
+<ol class="org-ol">
+<li>Extract the class column &ldquo;Malware&rdquo; from the DataFrame to obtain the
+label array. Name it <code>y</code>.</li>
+<li>Drop the &ldquo;Malware&rdquo; and &ldquo;Name&rdquo; columns from the DataFrame, and convert
+the result to a NumPy array. Save the result in the variable <code>X</code>.</li>
+<li>Use the <code>train_test_split</code> function to create an 80%/20% train/test
+split. Use the same variable names shown in the lecture.</li>
+<li>Use the <code>shape</code> method to print out the dimensions of the training
+and test sets, as a basic check that they have been correctly
+created.</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf55ea45" class="outline-2">
+<h2 id="orgf55ea45"><span class="section-number-2">4.</span> Training and evaluating the XGBoost classifier (10 points)</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+In this portion you will finally see how well an XGBoost classifier can
+learn to identify malware in this dataset.
+</p>
+</div>
+
+<div id="outline-container-org0185174" class="outline-3">
+<h3 id="org0185174"><span class="section-number-3">4.1.</span> Steps</h3>
+<div class="outline-text-3" id="text-4-1">
+<ol class="org-ol">
+<li>Import the XGBoost classifier and create a new classifier object.</li>
+<li>Use the <code>fit</code> method to train your classifier on the
+<i>training set only</i>.</li>
+<li>Use the <code>predict</code> method to generate predictions for the test set.</li>
+<li>Compare your predictions to the true label values for the test set
+using the <code>accuracy_score</code> function, and print the results.</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org6fb95e3" class="outline-2">
+<h2 id="org6fb95e3"><span class="section-number-2">5.</span> Additional Classifiers (20 points)</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+This is the most independent part of the project, in which you strike
+out on your own to get experience training and running classifiers.
+</p>
+</div>
+
+<div id="outline-container-org79d0308" class="outline-3">
+<h3 id="org79d0308"><span class="section-number-3">5.1.</span> Steps</h3>
+<div class="outline-text-3" id="text-5-1">
+<ol class="org-ol">
+<li>Consult the scikit-learn documentation
+(<a href="https://scikit-learn.org/stable/user_guide.html">https://scikit-learn.org/stable/user_guide.html</a>) and choose any <b>two</b>
+other classifiers that can can be used on this (supervised, binary
+classification) problem.</li>
+
+<li>Train and test a model for each of those two classifiers and print the
+accuracy results for each. Make sure you set any parameters that may
+be needed for the model to appropriate values.</li>
+
+<li>Include a markdown cell giving a general description in your own
+words of the classifiers you chose, and any speculations you may have
+as to why each performed better or worse than the others. Did any of
+them beat the XGBoost result?</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-org3916093" class="outline-2">
+<h2 id="org3916093"><span class="section-number-2">6.</span> What to Submit</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+To turn in the project, submit a single Jupyter notebook file on
+Blackboard containing all of the above code, printouts, and
+documentation. You can name the file anything you wish, as long as the
+<code>.ipynb</code> extension remains on the file.
+</p>
+
+<p>
+Your notebook will be graded according to the point distribution given
+above, on criteria of (1) inclusion of all required elements, (2) code
+correctness, and (3) quality of written descriptions. Make sure to
+verify before submitting that every cell in your notebook executes
+without error from top to bottom.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgcd4d91a" class="outline-2">
+<h2 id="orgcd4d91a"><span class="section-number-2">7.</span> Concluding remarks</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+Have fun! If you have any other types of analysis you would like to
+perform in addition to what is specified above, you are free to do them
+and submit them in your notebook (as long as it is neatly organized.) Let
+me know if you have any questions or concerns.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2022-08-29 Mon 16:58</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
